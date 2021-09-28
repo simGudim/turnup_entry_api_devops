@@ -3,6 +3,7 @@ module "shared_vars" {
     source = "../shared_vars"
 }
 
+
 # set publick security group for the load balancer
 resource "aws_security_group" "publicsg" {
     name = "publicsg_${module.shared_vars.env_suffix}"
@@ -22,6 +23,10 @@ resource "aws_security_group" "publicsg" {
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+}
+
+output "publicsg_id" {
+    value = "${aws_security_group.publicsg.id}"
 }
 
 # set the security group for the EC2 instance
@@ -44,4 +49,8 @@ resource "aws_security_group" "privatesg" {
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+}
+
+output "privatesg_id" {
+    value = "${aws_security_group.privatesg.id}"
 }

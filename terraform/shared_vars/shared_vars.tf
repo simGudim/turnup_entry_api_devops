@@ -4,9 +4,14 @@ output "vpcid" {
     value = "${local.vpcid}"
 }
 
-output "publicsubnteid" {
-    value = "${local.publicsubnetid}"
+output "publicsubnetid1" {
+    value = "${local.publicsubnetid1}"
 }
+
+output "publicsubnetid2" {
+    value = "${local.publicsubnetid2}"
+}
+
 
 output "privatesubnteid" {
     value = "${local.privatesubnetid}"
@@ -26,13 +31,20 @@ locals {
     }
     vpcid = "${lookup(local.vpcid_env, local.env)}"
 
-    # sets the publick subnet id
-    publicsubnetid_env = {
+    # sets the publick subnet id 1, we use 2 because of the load balancer
+    publicsubnetid1_env = {
         default = "subnet-0934c074"
         staging = "subnet-0934c074"
         production = "subnet-0934c074"
     }
-    publicsubnetid = "${lookup(local.publicsubnetid_env, local.env)}"
+    publicsubnetid1 = "${lookup(local.publicsubnetid1_env, local.env)}"
+
+    publicsubnetid2_env = {
+        default = "subnet-0934c074"
+        staging = "subnet-0934c074"
+        production = "subnet-0934c074"
+    }
+    publicsubnetid2 = "${lookup(local.publicsubnetid2_env, local.env)}"
 
     # sets the private subnet id
     privatesubnetid_env = {
