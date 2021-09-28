@@ -8,3 +8,4 @@ build the ami image for AWS
 creates the infrastructe
 
 # Vault
+creates secrets on Vault server
