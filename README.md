@@ -11,4 +11,4 @@ creates the infrastructe
 creates secrets on Vault server
 
 # Jenkins
-creates a pipeline config
+creates a pipeline config for devops
