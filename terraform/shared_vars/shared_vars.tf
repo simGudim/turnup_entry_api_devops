@@ -1,5 +1,5 @@
 
-#outputs the vpcid 
+#outputs the variable from the resources 
 output "vpcid" {
     value = "${local.vpcid}"
 }
@@ -40,9 +40,9 @@ locals {
     publicsubnetid1 = "${lookup(local.publicsubnetid1_env, local.env)}"
 
     publicsubnetid2_env = {
-        default = "subnet-0934c074"
-        staging = "subnet-0934c074"
-        production = "subnet-0934c074"
+        default = "subnet-5df5a911"
+        staging = "subnet-5df5a911"
+        production = "subnet-5df5a911"
     }
     publicsubnetid2 = "${lookup(local.publicsubnetid2_env, local.env)}"
 
