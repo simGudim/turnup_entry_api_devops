@@ -29,6 +29,13 @@ resource "aws_lb_target_group" "entry_api_tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = "${module.shared_vars.vpcid}"
+  # health_check {
+  #   path = "/some/url/path"
+  #   interval = 5
+  #   timeout = 4
+  #   healthy_threshold = 2
+  #   unhealthy_threshold = 10
+  # }
 }
 
 output "tg_arn" {
