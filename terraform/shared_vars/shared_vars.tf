@@ -13,12 +13,32 @@ output "publicsubnetid2" {
 }
 
 
-output "privatesubnteid" {
+output "privatesubnetid" {
     value = "${local.privatesubnetid}"
 }
 
 output "env_suffix" {
     value = "${local.env}"
+}
+
+output "instancetype" {
+    value = "${local.instancetype}"
+}
+
+output "keypair" {
+    value = "${local.keypair}"
+}
+
+output "asgdesired" {
+    value = "${local.asgdesired}"
+}
+
+output "asgmin" {
+    value = "${local.asgmin}"
+}
+
+output "asgmax" {
+    value = "${local.asgmax}"
 }
 
 locals {
@@ -53,4 +73,51 @@ locals {
         production = "subnet-14a7197f"
     }
     privatesubnetid = "${lookup(local.privatesubnetid_env, local.env)}"
+
+    instancetype_env = {
+        default = "t2.micro"
+        staging = "t2.micro"
+        production = "t2.medium"
+    }
+    instancetype = "${lookup(local.instancetype_env, local.env)}"
+    
+    keypair_env = {
+        default = "entry-api-key-pair-staging"
+        staging = "entry-api-key-pair-staging"
+        production = "entry-api-key-pair-production"
+    }
+    keypair = "${lookup(local.keypair_env, local.env)}"
+
+
+    asgdesired_env = {
+        default = "1"
+        staging = "1"
+        production = "2"
+    }
+    asgdesired = "${lookup(local.asgdesired_env, local.env)}"
+
+    asgmin_env = {
+        default = "1"
+        staging = "1"
+        production = "2"
+    }
+    asgmin = "${lookup(local.asgmin_env, local.env)}"
+
+
+    asgmax_env = {
+        default = "1"
+        staging = "1"
+        production = "2"
+    }
+    asgmax = "${lookup(local.asgmax_env, local.env)}"
+
+
+    # TODO
+    # sets the AMI id, maybe use this later????
+    # amiid_env = {
+    #     default = "subnet-14a7197f"
+    #     staging = "subnet-14a7197f"
+    #     production = "subnet-14a7197f"
+    # }
+    # amiid = "${lookup(local.amiid_env, local.env)}"
 }

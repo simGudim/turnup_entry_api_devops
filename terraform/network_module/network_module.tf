@@ -7,7 +7,7 @@ module "shared_vars" {
 # set publick security group for the load balancer
 resource "aws_security_group" "publicsg" {
     name = "publicsg_${module.shared_vars.env_suffix}"
-    description = "publick security group for load balancers in the Entry API ${module.shared_vars.env_suffix}"
+    description = "public security group for load balancers in the Entry API ${module.shared_vars.env_suffix}"
     vpc_id = "${module.shared_vars.vpcid}"
 
     ingress {

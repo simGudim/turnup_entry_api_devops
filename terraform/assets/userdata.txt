@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo su
+sudo update -y
+sudo apt install httpd php -y
+sudo service httpd start
